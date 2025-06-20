@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  ubuntu-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ubuntu22.04-gpu-cuda118
+    container_name: ubuntu22.04-gpu-cuda118-container
+    tty: true
+    stdin_open: true
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      - ./Ubuntu_22.04_CUDA_11.08:/workspace
