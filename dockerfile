@@ -17,7 +17,7 @@ RUN curl -sLo ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-py38
 
 # pip 최신화 및 PyTorch 설치
 RUN pip install --upgrade pip && \
-    pip install torch==2.4.0 torchvision==0.17.0 torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cu118
+    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # 작업 디렉토리 설정
 WORKDIR /workspace
