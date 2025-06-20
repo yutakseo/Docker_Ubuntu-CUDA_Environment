@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ubuntu22.04-gpu-cuda118
-    container_name: ubuntu22.04-gpu-cuda118-container
+    image: ubuntu22.04_cuda11.08_image
+    container_name: ubuntu22.04_cuda11.08_container
     tty: true
     stdin_open: true
     deploy:
