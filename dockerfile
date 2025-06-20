@@ -23,7 +23,7 @@ RUN conda init bash
 # conda 환경 생성 (Python 3.10 + PyTorch CUDA 11.8)
 RUN conda create -n vision python=3.10 -y && \
     conda run -n vision pip install --upgrade pip && \
-    conda run -n vision pip install pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118
+    conda run -n vision pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118
 
 
 # 작업 디렉토리
