@@ -13,11 +13,9 @@ ENV PATH=$CONDA_DIR/bin:$PATH
 RUN curl -sLo ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-py38_4.12.0-Linux-x86_64.sh && \
     bash ~/miniconda.sh -b -p $CONDA_DIR && \
     rm ~/miniconda.sh && \
-    conda clean -afy
+    conda clean -afy && \
+    pip install --upgrade pip
 
-# pip 최신화 및 PyTorch 설치
-RUN pip install --upgrade pip && \
-    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # 작업 디렉토리 설정
 WORKDIR /workspace
