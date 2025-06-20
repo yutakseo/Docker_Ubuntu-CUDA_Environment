@@ -20,8 +20,8 @@ RUN curl -sLo ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-late
 # conda 기본 셋업
 RUN conda init bash
 
-# conda 환경 생성 (Python 3.10 + PyTorch CUDA 11.8)
-RUN conda create -n vision python=3.10 -y && \
+# conda 환경 생성 (Python 3.8 + PyTorch CUDA 11.8)
+RUN conda create -n vision python=3.8 -y && \
     conda run -n vision pip install --upgrade pip && \
     conda run -n vision pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118
 
