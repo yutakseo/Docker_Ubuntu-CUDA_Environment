@@ -1,6 +1,7 @@
+# CUDA 11.8 + Ubuntu 22.04
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
-# 기본 패키지 설치
+# 필수 패키지 설치
 RUN apt-get update && apt-get install -y \
     curl \
     git \
@@ -17,20 +18,13 @@ RUN curl -sLo ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-late
     rm ~/miniconda.sh && \
     conda clean -afy
 
-# conda 기본 셋업
-RUN conda init bash
+# Python 3.8 설치 & pip 업그레이드
+RUN conda install -y python=3.8 && \
+    conda update -n base -c defaults pip && \
+    pip install torch==2.4.0 torchvision==0.17.0 torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cu118
 
-# conda 환경 생성 (Python 3.8 + PyTorch CUDA 11.8)
-RUN conda create -n vision python=3.8 -y && \
-    conda run -n vision pip install --upgrade pip && \
-    conda run -n vision pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118
-
-
-# 작업 디렉토리
+# 작업 디렉토리 설정
 WORKDIR /workspace
 
-# 기본 환경 자동 활성화
-SHELL ["/bin/bash", "-c"]
-RUN echo "conda activate vision" >> ~/.bashrc
-
+# 기본 쉘
 CMD ["/bin/bash"]
