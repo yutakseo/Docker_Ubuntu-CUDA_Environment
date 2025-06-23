@@ -16,6 +16,5 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-              
     volumes:
-      - ./Ubuntu_22.04_CUDA_11.08:/workspace
+      - ${VOLUME_DIR}:/workspace
