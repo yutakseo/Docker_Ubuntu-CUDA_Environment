@@ -1,0 +1,21 @@
+torch==2.1.0+cu118
+torchvision==0.16.0+cu118
+torchaudio==0.13.0  # if used, version should match PyTorch CUDA
+numpy==1.22.3
+pillow==8.2.0
+requests==2.32.3
+certifi==2024.8.30
+urllib3==2.2.3
+idna==3.10
+charset-normalizer==3.4.0
+typing_extensions==4.12.2
+pyyaml==6.0
+filelock==3.16.1
+jinja2==3.1.4
+sympy==1.13.3
+networkx==3.1
+cffi==1.15.0
+pycparser==2.22
+pysocks==1.7.1
+markupsafe==2.1.1
+olefile==0.47
