@@ -22,9 +22,10 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
+# 절대 경로로 변환
 VOLUME_DIR="$(realpath "$VOLUME_DIR")"
 
-# Docker 이미지 빌드 (없으면 자동으로)
+# Docker 이미지 존재 여부 확인 후 빌드
 if ! docker image inspect "$DOCKER_IMAGE" >/dev/null 2>&1; then
     echo "[INFO] Docker image not found. Building..."
     docker build -t "$DOCKER_IMAGE" -f "$DOCKERFILE_PATH" .
@@ -32,13 +33,13 @@ else
     echo "[INFO] Docker image found: $DOCKER_IMAGE"
 fi
 
-# 컨테이너 실행 중이면 중지 후 삭제
+# 기존 컨테이너 제거
 if docker ps -a --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
     echo "[INFO] Removing existing container: $CONTAINER_NAME"
     docker rm -f "$CONTAINER_NAME"
 fi
 
-# 볼륨 플래그 구성
+# 볼륨 마운트 플래그 구성
 VOLUME_FLAGS="-v ${VOLUME_DIR}:/workspace"
 
 if [[ -f "$DATASETS_FILE" ]]; then
@@ -58,3 +59,9 @@ docker run -d --gpus all \
   --name "$CONTAINER_NAME" \
   -it "$DOCKER_IMAGE" \
   /bin/bash
+
+# requirements.txt 심볼릭 링크 생성
+echo "[INFO] Creating symbolic link for requirements.txt inside container..."
+docker exec "$CONTAINER_NAME" ln -sf /opt/requirements.txt /workspace/requirements.txt
+
+echo "[INFO] Container is up and ready: $CONTAINER_NAME"
