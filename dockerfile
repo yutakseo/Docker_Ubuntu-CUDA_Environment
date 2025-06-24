@@ -27,8 +27,12 @@ WORKDIR /workspace
 
 # 기본 패키지 설치 (원한다면 여기서 더 추가 가능!)
 RUN pip install opencv-python-headless matplotlib tqdm seaborn
-# requirements.txt 복사
-COPY requirements.yaml /workspace/requirements.yaml
+
+# requirements.yaml은 마운트 영향 안 받는 /opt에 복사
+COPY requirements.yaml /opt/requirements.yaml
+
+# /workspace에도 접근 가능하도록 심볼릭 링크 생성
+RUN ln -s /opt/requirements.yaml /workspace/requirements.yaml
 
 # 기본 bash 쉘 실행
 CMD ["/bin/bash"]
