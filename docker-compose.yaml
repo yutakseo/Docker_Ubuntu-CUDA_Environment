@@ -9,6 +9,7 @@ services:
     container_name: ubuntu22.04_cuda11.08_container
     tty: true
     stdin_open: true
+    entrypoint: /bin/bash
     deploy:
       resources:
         reservations:
@@ -17,4 +18,4 @@ services:
               count: all
               capabilities: [gpu]
     volumes:
-      - ${VOLUME_DIR}:/workspace
+      - /share_ssd/yutak/workspace/MMyolo:/workspace
