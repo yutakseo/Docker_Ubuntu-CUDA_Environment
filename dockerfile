@@ -29,10 +29,10 @@ WORKDIR /workspace
 RUN pip install opencv-python-headless matplotlib tqdm seaborn
 
 # requirements.yaml은 마운트 영향 안 받는 /opt에 복사
-COPY requirements.yaml /opt/requirements.yaml
+COPY requirements.txt /opt/requirements.txt
+RUN ln -s /opt/requirements.txt /workspace/requirements.txt
 
-# /workspace에도 접근 가능하도록 심볼릭 링크 생성
-RUN ln -s /opt/requirements.yaml /workspace/requirements.yaml
 
-# 기본 bash 쉘 실행
-CMD ["/bin/bash"]
+# Entrypoint에서 symlink 만들고 bash 실행
+CMD ["/bin/bash", "-c", "ln -sf /opt/requirements.txt /workspace/requirements.txt && cd /workspace && exec bash"]
+
