@@ -5,7 +5,7 @@ FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 RUN apt-get update && apt-get install -y \
     curl git nano sudo \
     libgl1-mesa-glx libglib2.0-0 libglib2.0-dev \
-    libsm6 libxrender1 libxext6 ffmpeg unzip \
+    libsm6 libxrender1 libxext6 ffmpeg unzip wget \
     && rm -rf /var/lib/apt/lists/*
 
 # Miniconda 설치
