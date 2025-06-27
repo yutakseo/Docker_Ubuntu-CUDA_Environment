@@ -25,7 +25,7 @@ This setup allows you to skip the hassle of **dependency conflicts** and focus d
 If you already have datasets stored on your machine, just write their paths in `___DATASETS___.list`
 Edit the `___DATASETS___.list` file to include the absolute paths to your datasets(e.g., coco, VOC...), one per line.  
 
-```
+```cmd
 ___DATASETS___.list
 /home/yourname/datasets/my_coco_dataset
 /mnt/data/datasets/balloon_dataset
@@ -34,7 +34,7 @@ ___DATASETS___.list
 
 Each will be mounted inside the container under:
 
-```
+```container
 /workspace/DATASETS/<dataset_name>
 ```
 
@@ -43,7 +43,7 @@ Each will be mounted inside the container under:
 
 ### 2️⃣ Run the container  
 
-```bash
+```cmd
 bash run.sh -v /path/to/your_project_dir
 ```
 
@@ -64,7 +64,7 @@ docker exec -it ubuntu22.04_cuda11.08_container bash
 ```
 
 <details>
-<summary><strong>📦 Container Structure (click to expand)</strong></summary>
+<strong>📦 Container Structure</strong>
 
 ```text
 📁 /  # root
