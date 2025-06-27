@@ -3,6 +3,7 @@
 While working on deep learning projects, I realized that **environment setup** is often the most frustrating and time-consuming part.  
 To streamline this process, I built a ready-to-use **Docker environment** based on **Ubuntu 22.04** with **CUDA 11.8** support. This setup allows you to skip the hassle of **dependency conflicts** and focus directly on **model development and experimentation**. 😎
 
+---
 
 ## 🚀 Features
 
@@ -37,7 +38,7 @@ Each will be mounted inside the container under:
 ```
 
 
----
+
 
 ### 2️⃣ Run the container  
 
@@ -51,7 +52,7 @@ This is where your code and project files will be accessible inside the containe
 > 💡 If you omit the `-v` option, your **current working directory** will be mounted by default.
 
 
----
+
 
 ### 3️⃣ Access the container  
 
@@ -81,6 +82,5 @@ docker exec -it ubuntu22.04_cuda11.08_container bash
 - `/workspace/DATASETS/<dataset_name>` → dataset mounted via `___DATASETS___.list`  
 
 
----
 
 ### 4️⃣ Enjoy your deep learning development env! 😎
