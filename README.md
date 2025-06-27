@@ -38,7 +38,7 @@ Each will be mounted inside the container under:
 ```
 
 
- <br><br>
+ <br>
 
 
 
@@ -56,7 +56,7 @@ This is where your code and project files will be accessible inside the containe
 
 
 
- <br><br>
+ <br>
 
 
 
@@ -90,7 +90,7 @@ docker exec -it ubuntu22.04_cuda11.08_container bash
 
 
 
-<br><br>
+<br>
 
 
 
