@@ -24,8 +24,8 @@ To streamline this process, I built a ready-to-use **Docker environment** based 
 If you already have datasets stored on your machine, just write their paths in `___DATASETS___.list`.<br>
 Edit the `___DATASETS___.list` file to include the absolute paths to your datasets(e.g., coco, VOC...), one per line.  
 
-```cmd
-___DATASETS___.list
+```bash
+#[host]/___DATASETS___.list
 /home/yourname/datasets/my_coco_dataset
 /mnt/data/datasets/balloon_dataset
 /mnt/data2/VOC_dataset
@@ -33,7 +33,8 @@ ___DATASETS___.list
 
 Each will be mounted inside the container under:
 
-```container
+```bash
+#[container]
 /workspace/DATASETS/<dataset_name>
 ```
 
@@ -44,7 +45,8 @@ Each will be mounted inside the container under:
 
 ### 2. Run the container  
 
-```cmd
+```bash
+#[host]
 bash run.sh -v /path/to/your_project_dir
 ```
 
@@ -64,6 +66,7 @@ This is where your code and project files will be accessible inside the containe
 Once the container is running, you can enter it using:
 
 ```bash
+#[host]
 docker exec -it ubuntu22.04_cuda11.08_container bash
 ```
 
@@ -96,7 +99,8 @@ docker exec -it ubuntu22.04_cuda11.08_container bash
 
 ### 4. Install pip dependencies
 After entering the container, install Python dependencies using:
-```container
+```bash
+#[container]
 pip install -r requirements.txt
 ```
 This will install all the packages listed in your project's `requirements.txt`
