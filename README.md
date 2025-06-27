@@ -19,7 +19,7 @@ To streamline this process, I built a ready-to-use **Docker environment** based 
 ## 🛠️ Usage
 
 
-### 1️⃣ Add your dataset path  
+### 1. Add your dataset path  
 
 If you already have datasets stored on your machine, just write their paths in `___DATASETS___.list`
 Edit the `___DATASETS___.list` file to include the absolute paths to your datasets(e.g., coco, VOC...), one per line.  
@@ -40,7 +40,7 @@ Each will be mounted inside the container under:
 
 
 
-### 2️⃣ Run the container  
+### 2. Run the container  
 
 ```cmd
 bash run.sh -v /path/to/your_project_dir
@@ -54,7 +54,7 @@ This is where your code and project files will be accessible inside the containe
 
 
 
-### 3️⃣ Access the container  
+### 3. Access the container  
 
 Once the container is running, you can enter it using:
 
@@ -83,5 +83,46 @@ docker exec -it ubuntu22.04_cuda11.08_container bash
 - `/workspace/DATASETS/<dataset_name>` → dataset mounted via `___DATASETS___.list`  
 
 
+### 4. Install pip dependencies
+After entering the container, install Python dependencies using:
+```container
+pip install -r requirements.txt
+```
+This will install all the packages listed in your project's `requirements.txt`
+<details>
+<summary><strong>📦 Python Dependencies (Click to expand)</strong></summary>
 
-### 4️⃣ Enjoy your deep learning development env! 😎
+
+<details>
+```text
+# Use the PyTorch CUDA 11.8 wheel repository 
+--extra-index-url https://download.pytorch.org/whl/cu118
+
+# Core DL packages with CUDA 11.8
+torch==2.1.0+cu118  
+torchvision==0.16.0+cu118  
+torchaudio==2.1.0  
+
+# General dependencies
+numpy==1.22.3  
+pillow==8.2.0  
+requests==2.32.3  
+certifi==2024.8.30  
+urllib3==2.2.3  
+idna==3.10  
+charset-normalizer==3.4.0  
+typing_extensions==4.12.2  
+pyyaml==6.0  
+filelock==3.16.1  
+jinja2==3.1.4  
+sympy==1.13.3  
+networkx==3.1  
+cffi==1.15.0  
+pycparser==2.22  
+pysocks==1.7.1  
+markupsafe==2.1.1  
+olefile==0.47  
+```
+</details>
+
+### 5. Enjoy your deep learning development env! 😎
