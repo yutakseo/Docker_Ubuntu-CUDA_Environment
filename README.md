@@ -38,7 +38,7 @@ Each will be mounted inside the container under:
 ```
 
 
- \\n
+ <br><br><br>
 
 
 
@@ -55,7 +55,7 @@ This is where your code and project files will be accessible inside the containe
 
 
 
- \\n
+ <br><br><br>
 
 
 
@@ -90,7 +90,7 @@ docker exec -it ubuntu22.04_cuda11.08_container bash
 
 
 
- \\n
+ <br><br><br>
 
 
 
@@ -139,6 +139,6 @@ olefile==0.47
 </details>
 
 
- \\n
+ <br><br><br>
 
 ### 5. Enjoy your deep learning development env! 😎
