@@ -21,7 +21,7 @@ To streamline this process, I built a ready-to-use **Docker environment** based 
 
 ### 1. Add your dataset path  
 
-If you already have datasets stored on your machine, just write their paths in `___DATASETS___.list`.
+If you already have datasets stored on your machine, just write their paths in `___DATASETS___.list`.<br>
 Edit the `___DATASETS___.list` file to include the absolute paths to your datasets(e.g., coco, VOC...), one per line.  
 
 ```cmd
@@ -38,7 +38,7 @@ Each will be mounted inside the container under:
 ```
 
 
- <br><br><br>
+ <br><br>
 
 
 
@@ -55,7 +55,7 @@ This is where your code and project files will be accessible inside the containe
 
 
 
- <br><br><br>
+ <br><br>
 
 
 
@@ -89,8 +89,7 @@ docker exec -it ubuntu22.04_cuda11.08_container bash
 
 
 
-
- <br><br><br>
+<br><br>
 
 
 
@@ -139,6 +138,6 @@ olefile==0.47
 </details>
 
 
- <br><br><br>
+ <br><br>
 
 ### 5. Enjoy your deep learning development env! 😎
