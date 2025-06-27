@@ -4,7 +4,7 @@ While working on deep learning projects, I realized that **environment setup** i
 To streamline this process, I built a ready-to-use **Docker environment** based on **Ubuntu 22.04** with **CUDA 11.8** support. This setup allows you to skip the hassle of **dependency conflicts** and focus directly on **model development and experimentation**.
 
  <br><br>
----
+
 ## Features
 - ✅ One-command Docker setup with optional dataset mounting  
 - ✅ Automatic image build if not found  
@@ -13,7 +13,7 @@ To streamline this process, I built a ready-to-use **Docker environment** based 
 - ✅ CUDA 11.8 + Ubuntu 22.04 base for maximum compatibility  
 
  <br><br>
----
+
 ## Usage
 ### 1. Add your dataset path  
 
