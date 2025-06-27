@@ -26,6 +26,9 @@ Edit the `___DATASETS___.list` file to include the absolute paths to your datase
 Each will be mounted under `/workspace/DATASETS/<dataset_name>` in the container.
 
 
+
+
+
 ### 2. Run the container
 ```bash
 bash run.sh -v /path/to/your_project_dir
@@ -34,19 +37,25 @@ The -v option specifies the host directory you want to mount as the container’
 This is where your project files will live inside the container. if you don't specify your host working directory, It would automatically mount on your present working directory.
 
 
+
+
+
 ### 3. Inside the container
 ```bash
 docker exec -it ubuntu22.04_cuda11.08_container bash
 ```
 Container Structure
-📁 / #root
+<details> <summary><strong>📦 Container Structure</strong> (click to expand)</summary>
+#root
+📁 /  
 └── 📁 workspace
     ├── 📁 DATASETS
-    │ ├─── 📁 coco_example
-    │ └─── 📁 <another_dataset>
+    │   ├── 📁 coco_example
+    │   └── 📁 <another_dataset>
     │
-    ├── 📁 <your_project_dir> # e.g., Ultralytics, mmdetection
-    └── 📄 requirements.txt # symlinked automatically
+    ├── 📁 <your_project_dir>   # e.g., Ultralytics, mmdetection
+    └── 📄 requirements.txt     # symlinked automatically
+</details>
     
 - `/workspace` → your working directory  
 - `/workspace/DATASETS/<dataset_name>` → dataset mounted via `___DATASETS___.list`
