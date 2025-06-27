@@ -71,7 +71,7 @@ docker exec -it ubuntu22.04_cuda11.08_container bash
 ```
 
 
-<summary><strong> Container Structure (click to expand)</strong></summary>
+<strong>Container Structure</strong>
 
 ```text
 📁 /  # root
