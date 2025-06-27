@@ -56,6 +56,7 @@ fi
 echo "[INFO] Running container: $CONTAINER_NAME"
 docker run -d --gpus all \
   $VOLUME_FLAGS \
+  --shm-size=32g \
   --name "$CONTAINER_NAME" \
   -it "$DOCKER_IMAGE" \
   /bin/bash
