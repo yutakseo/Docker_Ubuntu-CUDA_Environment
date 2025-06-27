@@ -21,7 +21,7 @@ To streamline this process, I built a ready-to-use **Docker environment** based 
 
 ### 1. Add your dataset path  
 
-If you already have datasets stored on your machine, just write their paths in `___DATASETS___.list`
+If you already have datasets stored on your machine, just write their paths in `___DATASETS___.list`.
 Edit the `___DATASETS___.list` file to include the absolute paths to your datasets(e.g., coco, VOC...), one per line.  
 
 ```cmd
