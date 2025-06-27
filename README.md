@@ -6,7 +6,6 @@ To streamline this process, I built a ready-to-use **Docker environment** based 
  <br><br>
 ---
 ## Features
-
 - ✅ One-command Docker setup with optional dataset mounting  
 - ✅ Automatic image build if not found  
 - ✅ Easy volume linking using `___DATASETS___.list`  
@@ -16,8 +15,6 @@ To streamline this process, I built a ready-to-use **Docker environment** based 
  <br><br>
 ---
 ## Usage
-
-
 ### 1. Add your dataset path  
 
 If you already have datasets stored on your machine, just write their paths in `___DATASETS___.list`.<br>
