@@ -89,40 +89,40 @@ After entering the container, install Python dependencies using:
 pip install -r requirements.txt
 ```
 This will install all the packages listed in your project's `requirements.txt`
-<details>
-<summary><strong>📦 Python Dependencies (Click to expand)</strong></summary>
-
+The full list of dependencies is shown below.
 
 <details>
-```text
-# Use the PyTorch CUDA 11.8 wheel repository 
+<summary><strong>📦 Python Dependencies (click to expand)</strong></summary>
+
+```txt
 --extra-index-url https://download.pytorch.org/whl/cu118
 
 # Core DL packages with CUDA 11.8
-torch==2.1.0+cu118  
-torchvision==0.16.0+cu118  
-torchaudio==2.1.0  
+torch==2.1.0+cu118
+torchvision==0.16.0+cu118
+torchaudio==2.1.0
 
 # General dependencies
-numpy==1.22.3  
-pillow==8.2.0  
-requests==2.32.3  
-certifi==2024.8.30  
-urllib3==2.2.3  
-idna==3.10  
-charset-normalizer==3.4.0  
-typing_extensions==4.12.2  
-pyyaml==6.0  
-filelock==3.16.1  
-jinja2==3.1.4  
-sympy==1.13.3  
-networkx==3.1  
-cffi==1.15.0  
-pycparser==2.22  
-pysocks==1.7.1  
-markupsafe==2.1.1  
-olefile==0.47  
+numpy==1.22.3
+pillow==8.2.0
+requests==2.32.3
+certifi==2024.8.30
+urllib3==2.2.3
+idna==3.10
+charset-normalizer==3.4.0
+typing_extensions==4.12.2
+pyyaml==6.0
+filelock==3.16.1
+jinja2==3.1.4
+sympy==1.13.3
+networkx==3.1
+cffi==1.15.0
+pycparser==2.22
+pysocks==1.7.1
+markupsafe==2.1.1
+olefile==0.47
 ```
+
 </details>
 
 ### 5. Enjoy your deep learning development env! 😎
