@@ -36,7 +36,7 @@ Each will be mounted inside the container under:
 ```container
 /workspace/DATASETS/<dataset_name>
 ```
-
+\n\n
 
 
 
@@ -50,7 +50,7 @@ The `-v` option specifies the **host directory** to be mounted as the container�
 This is where your code and project files will be accessible inside the container.  
 
 > 💡 If you omit the `-v` option, your **current working directory** will be mounted by default.
-
+\n\n
 
 
 
@@ -81,6 +81,9 @@ docker exec -it ubuntu22.04_cuda11.08_container bash
 
 - `/workspace` → your working directory  
 - `/workspace/DATASETS/<dataset_name>` → dataset mounted via `___DATASETS___.list`  
+\n\n
+
+
 
 
 ### 4. Install pip dependencies
@@ -95,6 +98,7 @@ The full list of dependencies is shown below.
 <summary><strong>📦 Python Dependencies (click to expand)</strong></summary>
 
 ```txt
+# Use the PyTorch CUDA 11.8 wheel repository
 --extra-index-url https://download.pytorch.org/whl/cu118
 
 # Core DL packages with CUDA 11.8
@@ -124,5 +128,6 @@ olefile==0.47
 ```
 
 </details>
+\n\n
 
 ### 5. Enjoy your deep learning development env! 😎
