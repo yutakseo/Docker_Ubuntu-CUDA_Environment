@@ -70,7 +70,7 @@ Once the container is running, you can enter it using:
 docker exec -it ubuntu22.04_cuda11.08_container bash
 ```
 
-<details>
+
 <summary><strong> Container Structure (click to expand)</strong></summary>
 
 ```text
@@ -84,7 +84,6 @@ docker exec -it ubuntu22.04_cuda11.08_container bash
     └── 📄 requirements.txt     # symlinked automatically
 ```
 
-</details>
 
 
 - `/workspace` → your working directory  
