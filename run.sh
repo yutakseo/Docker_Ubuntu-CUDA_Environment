@@ -1,4 +1,9 @@
-#!/bin/bash
+#Docker env setting shell Usage:
+#type your dataset path in ___DATASETS___.list file, if you want to use your own datasets.
+#bash run.sh -v /path/to/your/volume
+
+
+
 
 # 설정값
 VOLUME_DIR="$(pwd)"
