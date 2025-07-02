@@ -8,8 +8,8 @@
 # 설정값
 VOLUME_DIR="$(pwd)"
 DATASETS_FILE="___DATASETS___.list"
-DOCKER_IMAGE="ubuntu22.04_cuda11.08_image"
-CONTAINER_NAME="ubuntu22.04_cuda11.08_container"
+DOCKER_IMAGE="smart-detection_image"
+CONTAINER_NAME="smart-detection_container"
 DOCKERFILE_PATH="Dockerfile"
 
 # 인자 파싱
@@ -53,7 +53,7 @@ if [[ -f "$DATASETS_FILE" ]]; then
         [[ -z "$dataset_path" ]] && continue
         dataset_path_clean="$(realpath "$dataset_path")"
         dataset_name="$(basename "$dataset_path_clean")"
-        VOLUME_FLAGS+=" -v ${dataset_path_clean}:/workspace/DATASETS/${dataset_name}"
+        VOLUME_FLAGS+=" -v ${dataset_path_clean}:/workspace/datasets/${dataset_name}"
     done
 fi
 
@@ -61,7 +61,7 @@ fi
 echo "[INFO] Running container: $CONTAINER_NAME"
 docker run -d --gpus all \
   $VOLUME_FLAGS \
-  --shm-size=32g \
+  --shm-size=64g \
   --name "$CONTAINER_NAME" \
   -it "$DOCKER_IMAGE" \
   /bin/bash
