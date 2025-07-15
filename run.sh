@@ -59,14 +59,15 @@ fi
 
 # 컨테이너 실행
 echo "[INFO] Running container: $CONTAINER_NAME"
-docker run -d --gpus all \
+docker run --gpus all \
   $VOLUME_FLAGS \
   --shm-size=120g \
   --ipc=host \
   --network=host \
   --name "$CONTAINER_NAME" \
   -it "$DOCKER_IMAGE" \
-  /bin/bash
+  bash -c "cd /workspace && python -m torch.distributed.run --nproc_per_node=2 train.py ..."
+
 
 # requirements.txt 심볼릭 링크 생성
 echo "[INFO] Creating symbolic link for requirements.txt inside container..."
