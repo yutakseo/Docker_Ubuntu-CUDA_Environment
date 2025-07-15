@@ -6,6 +6,8 @@ torch==2.1.0+cu118
 torchvision==0.16.0+cu118
 torchaudio==2.1.0
 ultralytics
+ipykernel==6.29.4
+
 
 # General dependencies
 numpy==1.22.3
