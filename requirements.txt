@@ -26,3 +26,5 @@ pycparser==2.22
 pysocks==1.7.1
 markupsafe==2.1.1
 olefile==0.47
+pynvml
+pytest
