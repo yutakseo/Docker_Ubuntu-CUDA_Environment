@@ -8,8 +8,8 @@
 # 설정값
 VOLUME_DIR="$(pwd)"
 DATASETS_FILE="___DATASETS___.list"
-DOCKER_IMAGE="smart-detection_image"
-CONTAINER_NAME="smart-detection_container"
+DOCKER_IMAGE="ubuntu-cuda-env"
+CONTAINER_NAME="ubuntu-cuda-env-container"
 DOCKERFILE_PATH="Dockerfile"
 
 # 인자 파싱
