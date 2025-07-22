@@ -53,7 +53,7 @@ if [[ -f "$DATASETS_FILE" ]]; then
         [[ -z "$dataset_path" ]] && continue
         dataset_path_clean="$(realpath "$dataset_path")"
         dataset_name="$(basename "$dataset_path_clean")"
-        VOLUME_FLAGS+=" -v ${dataset_path_clean}:/workspace/datasets/${dataset_name}"
+        VOLUME_FLAGS+=" -v ${dataset_path_clean}:/workspace/mounted_datasets/${dataset_name}/"
     done
 fi
 
