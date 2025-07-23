@@ -1,9 +1,9 @@
-#Docker env setting shell Usage:
-#type your dataset path in ___DATASETS___.list file, if you want to use your own datasets.
-#bash run.sh -v /path/to/your/volume
+#!/bin/bash
 
-
-
+# Docker env setting shell
+# Usage:
+# - Type your dataset path in ___DATASETS___.list file, if you want to use your own datasets.
+# - bash run.sh -v /path/to/your/volume
 
 # 설정값
 VOLUME_DIR="$(pwd)"
@@ -45,21 +45,30 @@ if docker ps -a --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
 fi
 
 # 볼륨 마운트 플래그 구성
-VOLUME_FLAGS="-v ${VOLUME_DIR}:/workspace"
+VOLUME_FLAGS="-v \"$VOLUME_DIR\":/workspace"
 
 if [[ -f "$DATASETS_FILE" ]]; then
-    mapfile -t dataset_paths < "$DATASETS_FILE"
-    for dataset_path in "${dataset_paths[@]}"; do
-        [[ -z "$dataset_path" ]] && continue
-        dataset_path_clean="$(realpath "$dataset_path")"
+    while IFS= read -r dataset_path || [[ -n "$dataset_path" ]]; do
+        # 빈 줄, 주석 무시
+        [[ -z "$dataset_path" || "$dataset_path" =~ ^# ]] && continue
+
+        # realpath 실패 시 무시
+        dataset_path_clean="$(realpath "$dataset_path" 2>/dev/null)" || {
+            echo "[WARN] Invalid path: $dataset_path"
+            continue
+        }
+
         dataset_name="$(basename "$dataset_path_clean")"
-        VOLUME_FLAGS+=" -v ${dataset_path_clean}:/workspace/mounted_datasets/${dataset_name}/"
-    done
+        VOLUME_FLAGS+=" -v \"$dataset_path_clean\":/workspace/mounted_datasets/\"$dataset_name\""
+    done < "$DATASETS_FILE"
 fi
 
+# 디버그 출력
+echo "[DEBUG] Docker run command:"
+echo "docker run -d --gpus all $VOLUME_FLAGS --shm-size=64g --name \"$CONTAINER_NAME\" -it \"$DOCKER_IMAGE\" /bin/bash"
+
 # 컨테이너 실행
-echo "[INFO] Running container: $CONTAINER_NAME"
-docker run -d --gpus all \
+eval docker run -d --gpus all \
   $VOLUME_FLAGS \
   --shm-size=64g \
   --name "$CONTAINER_NAME" \
