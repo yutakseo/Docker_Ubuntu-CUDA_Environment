@@ -6,11 +6,13 @@
 # - bash run.sh -v /path/to/your/volume
 
 # 설정값
-VOLUME_DIR="$(pwd)"
-DATASETS_FILE="___DATASETS___.list"
+#!/bin/bash
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 DOCKER_IMAGE="ubuntu-cuda-env"
-CONTAINER_NAME="ubuntu-cuda-env-container"
-DOCKERFILE_PATH="Dockerfile"
+CONTAINER_NAME="detection-with-mmdet-container"
+DOCKERFILE_PATH="${SCRIPT_DIR}/Dockerfile"
+DATASETS_FILE="${SCRIPT_DIR}/___DATASETS___.list"
 
 # 인자 파싱
 while [[ "$#" -gt 0 ]]; do
@@ -49,10 +51,8 @@ VOLUME_FLAGS="-v \"$VOLUME_DIR\":/workspace"
 
 if [[ -f "$DATASETS_FILE" ]]; then
     while IFS= read -r dataset_path || [[ -n "$dataset_path" ]]; do
-        # 빈 줄, 주석 무시
         [[ -z "$dataset_path" || "$dataset_path" =~ ^# ]] && continue
 
-        # realpath 실패 시 무시
         dataset_path_clean="$(realpath "$dataset_path" 2>/dev/null)" || {
             echo "[WARN] Invalid path: $dataset_path"
             continue
@@ -74,6 +74,18 @@ eval docker run -d --gpus all \
   --name "$CONTAINER_NAME" \
   -it "$DOCKER_IMAGE" \
   /bin/bash
+
+# 마운트된 데이터셋 경로 생성
+if [[ -f "$DATASETS_FILE" ]]; then
+    while IFS= read -r dataset_path || [[ -n "$dataset_path" ]]; do
+        [[ -z "$dataset_path" || "$dataset_path" =~ ^# ]] && continue
+        dataset_path_clean="$(realpath "$dataset_path" 2>/dev/null)" || continue
+        dataset_name="$(basename "$dataset_path_clean")"
+
+        echo "[INFO] Creating /workspace/mounted_datasets/$dataset_name inside container..."
+        docker exec "$CONTAINER_NAME" mkdir -p "/workspace/mounted_datasets/$dataset_name"
+    done < "$DATASETS_FILE"
+fi
 
 # requirements.txt 심볼릭 링크 생성
 echo "[INFO] Creating symbolic link for requirements.txt inside container..."
