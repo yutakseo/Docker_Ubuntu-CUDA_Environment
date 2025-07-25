@@ -8,7 +8,7 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 DOCKER_IMAGE="ubuntu-cuda-env"
-CONTAINER_NAME="detection-with-mmdet-container"
+CONTAINER_NAME="ubuntu-cuda-env-container"
 DOCKERFILE_PATH="${SCRIPT_DIR}/Dockerfile"
 DATASETS_FILE="${SCRIPT_DIR}/___DATASETS___.list"
 
